@@ -1,0 +1,126 @@
+.nav {
+    width: 60%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    flex-direction: column;
+    /* margin-inline: 1rem; */
+    /* margin-block: 1rem; */
+    /* padding-inline: 1rem; */
+    padding-block: 0.2rem;
+    background-color: #FFFFFF;
+    /* border-radius: 0.625rem; */
+    
+
+    box-shadow: 0px 6px 24px -5px #10192814;
+    border-bottom: 1px solid #E8EAED;
+    
+}
+
+.mainNav{
+padding-inline: 1rem;
+}
+
+.mainNav p:first-child{
+    color: #0586D7;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem;
+}
+
+@media (min-width: 540px) {
+    .nav {
+        width: 17.813rem;
+    }
+}
+
+@media (min-width: 260px) {
+    .nav {
+        width: 14.813rem;
+    }
+}
+
+.span{
+    font-size: 15px;
+}
+
+.logoWrapper {
+    display: block;
+    background-image: url('../../../svgs/logo.svg');
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 4rem;
+    
+    
+}
+
+.navLink {
+    display: flex;
+    gap: 0.875rem;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 500;
+    padding-inline: 0.8rem;
+    color: #042F46;
+    cursor: pointer;
+    border-radius: 1px;
+    padding-block: 1rem;
+}
+.navLink:hover, .navLink:hover span {
+    font-weight: 700;
+}
+
+.navLink:active {
+    color: #042F46;
+}
+
+.navLink:active{
+    border-radius: 5px;
+    background-color: #042F46;
+    color: #FFFFFF;
+    border: none;
+
+    & path {
+        fill: #FFFFFF;
+    }
+}
+.navLinklogout {
+    display: flex;
+    gap: 0.875rem;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.8rem ;
+    margin-top: 4.7rem;
+   
+    color: #042F46;
+    cursor: pointer;
+}
+.navLinklogout:hover, .navLinklogout:hover span {
+    font-weight: 700;
+}
+  
+  .icon {
+    margin-right: 10px; /* Adjust the margin as needed */
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.space{
+    margin-block-end: 2rem;
+    margin-block-start: 0.5rem;  
+    color:   #E8EAED;
+    border-bottom: 1px solid #E8EAED;
+}
+
+.activeIcon path {
+    fill: #FFFFFF;
+}
