@@ -6,20 +6,25 @@
 .container > label {
   font-weight: 700;
   font-size: 14px;
-  text-align: right;
   color: #232323;
 }
 
 input {
   border: 1px solid #b0bed3;
-  height: 54px;
+  height: 50px;
   width: 388px;
+  margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 750px) {
+    margin-top: 2px;
+    width: 220px;
+  }
 }
 
 input::placeholder {
+  padding: 0.5rem;
   font-weight: 400;
   font-size: 14px;
-  text-align: right;
   color: #90a0b7;
 }
 

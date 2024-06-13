@@ -30,6 +30,8 @@ const Input: FC<InputProps> = ({
             <input
               {...field}
               placeholder={placeholder}
+              type={type}
+              value={value}
               disabled={disable}></input>
           </div>
 
