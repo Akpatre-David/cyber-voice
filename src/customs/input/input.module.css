@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > label {
+  font-weight: 700;
+  font-size: 14px;
+  text-align: right;
+  color: #232323;
+}
+
+input {
+  border: 1px solid #b0bed3;
+  height: 54px;
+  width: 388px;
+}
+
+input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  text-align: right;
+  color: #90a0b7;
+}
+
+.error {
+  color: red;
+  font-size: 1rem;
+  font-weight: bold;
+}

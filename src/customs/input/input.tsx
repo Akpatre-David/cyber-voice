@@ -22,7 +22,22 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <Field name={name}>
-      <section></section>
+      {({ field, meta }: FieldProps) => (
+        <section className={styles.container}>
+          <label>{label}</label>
+
+          <div className={styles.InputContainer}>
+            <input
+              {...field}
+              placeholder={placeholder}
+              disabled={disable}></input>
+          </div>
+
+          {meta.touched && meta.error && (
+            <div className={styles.error}>{meta.error}</div>
+          )}
+        </section>
+      )}
     </Field>
   );
 };
