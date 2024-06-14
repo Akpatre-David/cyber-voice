@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
+  margin: auto;
+  height: 100%;
 }
 
 .sign {
@@ -60,28 +61,24 @@
 .links {
   text-decoration: none;
   color: #23527c;
-}
-
-.linkss {
-  text-decoration: none;
-  color: #232323;
-}
-
-.linkContainer > span:nth-of-type(1) {
-  color: #232323 !important;
-  font-weight: 700;
-  font-size: 14px;
-  @media screen and (max-width: 750px) {
-    font-weight: 200;
-    font-size: 10px;
-  }
-}
-
-.linkContainer > span:nth-of-type(2) {
   font-weight: 400;
   font-size: 14px;
   @media screen and (max-width: 750px) {
     font-weight: 200;
     font-size: 8px;
+  }
+
+  .linkss {
+    text-decoration: none;
+    color: #232323;
+    font-weight: 700;
+    font-size: 14px;
+    @media screen and (max-width: 750px) {
+      font-weight: 200;
+      font-size: 10px;
+    }
+  }
+
+  .linkContainer > span:nth-of-type(2) {
   }
 }
