@@ -50,8 +50,8 @@ const Main: React.FC<ComponentProps & Props> = ({ children, window }) => {
 
       <div className={styles.content}>
         <Header handleSidebarToggle={handleSidebarToggle} />
-        {children}
-        {/* <Outlet /> */}
+        {/* {children} */}
+        <Outlet />
       </div>
     </div>
   );

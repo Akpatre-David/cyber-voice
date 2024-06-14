@@ -51,7 +51,7 @@ const Login = () => {
 
                   <div className={styles.linkContainer}>
                     <span>
-                      <Link to="/" className={styles.links}>
+                      <Link to="/dashboard" className={styles.links}>
                         Forget your password?
                       </Link>
                     </span>
