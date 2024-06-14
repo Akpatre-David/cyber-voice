@@ -5,6 +5,7 @@ import { ReactComponent as Avatar } from "../../../svgs/headerProfile.svg";
 import { ReactComponent as Back } from "../../../svgs/back.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { logout } from "../../../utils/logout";
 // import { useSelector } from "react-redux";
 // import { RootState } from "../../../store/store";
 
@@ -100,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ handleSidebarToggle }) => {
           Hello Godwin Agbonmajiaziowe
         </span>
       </div>
-      <button className={styles.signOut}>Sign out</button>
+      <button className={styles.signOut} onClick={logout}>Sign out</button>
      </div>
      
   

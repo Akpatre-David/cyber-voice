@@ -4,6 +4,7 @@ import Dashboard from "./components/dashboard/main";
 import Balance from "./components/balance/main";
 import Login from "./components/login/login";
 import NotFound from "./components/notFound/notFound";
+import TopUp from "./components/topUp/main";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<DashboardLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="balance" element={<Balance />} />
+          <Route path="top-up" element={<TopUp />} />
         </Route>
       </Routes>
     </Router>

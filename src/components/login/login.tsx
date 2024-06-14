@@ -1,14 +1,40 @@
 import react from "react";
 import styles from "./login.module.css";
 import Card from "../../customs/card/card";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikValues } from "formik";
 import Input from "../../customs/input/input";
 import { loginValidation } from "../../validation/login";
 import Button from "../../customs/button/button";
 import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { LoginCall, LoginPayload } from "../../requests";
+
 
 const Login = () => {
   const navigate = useNavigate();
+  
+  const loginMutation = useMutation({
+    mutationFn: LoginCall,
+    mutationKey: ['login'],
+  })
+
+  const loginHandler = async (values: FormikValues) => {
+    const payload: LoginPayload = {
+      username: values?.username.trim(),
+      password: values?.password.trim(),
+    };
+    try {
+      await loginMutation.mutateAsync(payload, {
+        onSuccess: (data) => {
+          // setUser(data?.Data);
+        },
+      });
+    } catch (error: any) {
+      // notification.error({
+      //   message: error?.Message || error?.response?.data?.Message,
+      // });
+    }
+  };
 
   return (
     <section className={styles.container}>
@@ -25,7 +51,7 @@ const Login = () => {
             }}
             validationSchema={loginValidation}
             onSubmit={(values) => {
-              //   loginUserHandler(values);
+                loginHandler(values);
             }}>
             {(props) => {
               return (
