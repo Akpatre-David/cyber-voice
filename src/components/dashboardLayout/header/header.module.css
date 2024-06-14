@@ -1,0 +1,62 @@
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.183rem;
+    /* margin-block-start: 1.183rem; */
+	/* margin-block-end: 2rem; */
+    padding-block: 1rem;
+    padding-inline-start: 1.125rem;
+    padding-inline-end: 2rem;
+    background-color: #FFFFFF;
+    /* border-radius: 8px; */
+    border-bottom: 1px solid #E8EAED;
+    flex-wrap: wrap;
+    
+}
+
+@media (max-width: 450px) {
+    .date {
+        display: none;
+    }
+}
+
+.text{
+    font-weight: 400;
+    font-size: 1rem;
+
+    @media (max-width: 320px) {
+        font-size: 0.75rem;
+    }
+}
+
+.iconButton{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.signOut{
+    border: none;
+    outline: none;
+    background: none;
+    color: #E93F3F;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.others{
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width:768px) {
+        gap:1rem
+    }
+
+}
+.back{
+  
+
+}

@@ -18,7 +18,8 @@ input {
   border: 1px solid #b0bed3;
   height: 50px;
   width: 388px;
-
+  padding-inline: 1rem;
+  margin-bottom: 6px;
 
   @media screen and (max-width: 750px) {
     margin-top: 2px;
