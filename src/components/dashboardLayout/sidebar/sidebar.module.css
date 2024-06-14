@@ -13,8 +13,6 @@
     padding-block: 0.2rem;
     background-color: #FFFFFF;
     /* border-radius: 0.625rem; */
-    
-
     box-shadow: 0px 6px 24px -5px #10192814;
     border-bottom: 1px solid #E8EAED;
     
@@ -66,27 +64,31 @@ padding-inline: 1rem;
     text-decoration: none;
     font-weight: 500;
     padding-inline: 0.8rem;
-    color: #042F46;
+    color: #90A0B7;
     cursor: pointer;
     border-radius: 1px;
     padding-block: 1rem;
+
+}
+.navLink path{
+    fill: #90A0B7;
 }
 .navLink:hover, .navLink:hover span {
     font-weight: 700;
 }
 
 .navLink:active {
-    color: #042F46;
+    color: #0586D7;
 }
 
 .navLink:active{
     border-radius: 5px;
-    background-color: #042F46;
+    /* background-color: #042F46; */
     color: #FFFFFF;
     border: none;
 
     & path {
-        fill: #FFFFFF;
+        fill: #0586D7;
     }
 }
 .navLinklogout {
@@ -122,5 +124,5 @@ padding-inline: 1rem;
 }
 
 .activeIcon path {
-    fill: #FFFFFF;
+    fill: #0586D7;
 }

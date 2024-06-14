@@ -3,7 +3,7 @@ import styles from "./login.module.css";
 import Card from "../../customs/card/card";
 import { Form, Formik } from "formik";
 import Input from "../../customs/input/input";
-import { loginValidation } from "../../Validation/login";
+import { loginValidation } from "../../validation/login";
 import Button from "../../customs/button/button";
 import { Link, useNavigate } from "react-router-dom";
 

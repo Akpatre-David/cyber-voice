@@ -1,6 +1,9 @@
 .ButtonStyle {
-  width: 100%;
+  /* width: 100%; */
   background-color: #0586d7;
   color: #ffffff;
   border: none;
+  padding-inline: 24px;
+  padding-block: 14px;
+  border-radius: 4px;
 }

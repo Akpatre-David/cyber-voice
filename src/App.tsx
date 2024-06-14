@@ -13,7 +13,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path="/" element={<DashboardLayout />}>
-          
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="balance" element={<Balance />} />
         </Route>

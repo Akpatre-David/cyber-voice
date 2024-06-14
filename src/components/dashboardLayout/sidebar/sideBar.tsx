@@ -7,11 +7,11 @@ import styles from "./sidebar.module.css";
 
 const activeStyle = {
   borderRadius: "5px",
-  backgroundColor: "var(--color-button-bg)",
-  color: "#FFFFFF",
+  // backgroundColor: "var(--color-button-bg)",
+  color: "#0586D7",
   border: "none",
   svg: {
-    fill: "#FFFFFF",
+    fill: "#0586D7",
     backgroundColor: "red",
   },
 };
