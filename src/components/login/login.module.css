@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
+  margin: auto;
+  height: 100%;
+  /* margin-top: 6rem; */
 }
 
 .sign {

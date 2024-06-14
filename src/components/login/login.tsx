@@ -7,7 +7,7 @@ import Button from "../../customs/button/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { LoginCall, LoginPayload } from "../../requests";
-import { loginValidation } from "../../Validation/login";
+import { loginValidation } from "../../validation/login";
 
 const Login = () => {
   const navigate = useNavigate();
