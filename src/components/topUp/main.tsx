@@ -1,15 +1,49 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikValues } from "formik";
 import styles from "./main.module.css";
 import { number, object } from "yup";
 import Button from "../../customs/button/button";
 import Input from "../../customs/input/input";
 import { ReactComponent as Payment } from "../../svgs/payment.svg";
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { PaymentDetails, ProcessPaymentCall, ProcessPaymentPayload, baseUrl } from "../../requests";
+import { errorMessage } from "../../utils/errorMessage";
+import { useSnackbar } from "../../utils/snackBar";
+import { useAtom } from "jotai";
+import { userData } from "../../state";
 
 const Main = () => {
+  const { showSnackbar } = useSnackbar();
+  const [user] = useAtom(userData)
   const validationSchema = object().shape({
     amount: number().typeError("Amount must be a number").required("Amount is required"),
   });
+
+  const topUpMutation = useMutation({
+    mutationFn: ProcessPaymentCall,
+    mutationKey: ["process-payment"],
+  });
+
+  const topUpHandler = async (values: FormikValues) => {
+    const payload: ProcessPaymentPayload = {
+      money: parseInt(values?.amount),
+      returnUrl: `${baseUrl}/dashboard`,
+      idClient: user?.idClient,
+      clientType: user?.clientType,
+      addToInvoice: true,
+      description: 'top up'
+    };
+    try {
+      await topUpMutation.mutateAsync(payload, {
+        onSuccess: (data) => {
+          const responseData = JSON.parse(data?.ResponsePayLoad) as PaymentDetails;
+          window.location.href = responseData?.RedirectURL;
+        },
+      });
+    } catch (error: any) {
+      showSnackbar(errorMessage(error));
+    }
+  };
   return (
     <section className={styles.section}>
       <h1>Top Up</h1>
@@ -20,7 +54,7 @@ const Main = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          //   loginUserHandler(values);
+         topUpHandler(values)
         }}
       >
         {(props) => {

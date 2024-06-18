@@ -7,11 +7,26 @@ interface LoginData{
   login: string
 }
 interface Profile{
-
+  idClient: number
+  clientType: number
+  tariffId: number
+  tariffName: string
+  currencyId: number
+  resellerId: number
+  currencyName: string
+  famofo: any
+  lastName: string
+  login: string
+  eMail: string
+  isPBXSubAccount: boolean
+  isPBXMainAccount: boolean
+  isCallsShopCabin: boolean
+  accountState: number
+  creditAllowed: number
+  creditBalance: number
 }
 const defaultUser = localStorage.getItem("voip-user-data");
-const defaultProfile = localStorage.getItem("voip-user-profile");
-export const userData = atomWithStorage<LoginData | undefined>("voip-user-data", JSON.parse(defaultUser!) ?? undefined);
-export const userProfile = atomWithStorage<Profile>("voip-user-profile", JSON.parse(defaultProfile!) ?? undefined);
+export const userData = atomWithStorage<Profile>("voip-user-data", JSON.parse(defaultUser!) ?? undefined);
+
 
 
