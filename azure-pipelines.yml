@@ -48,13 +48,13 @@ steps:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
   displayName: 'Archive build files'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'    
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'    
     artifactName: 'VoipFE'
     publishLocation: 'Container'    
   displayName: 'Publish artifact'
