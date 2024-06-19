@@ -1,9 +1,13 @@
 import { Drawer } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./header/header";
 import styles from "./main.module.css";
 import Sidebar from "./sidebar/sideBar";
 import { Outlet } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { GetBalanceCall, GetBalancePayload } from "../../requests";
+import { useAtom } from "jotai";
+import { userBalance, userData } from "../../state";
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -14,6 +18,8 @@ interface Props {
 
 const Main: React.FC<ComponentProps & Props> = ({ children, window }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user] = useAtom(userData);
+  const [balance, setBalance] = useAtom(userBalance);
   const handleSidebarToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -21,6 +27,32 @@ const Main: React.FC<ComponentProps & Props> = ({ children, window }) => {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+    const getBalanceMutation = useMutation({
+      mutationFn: GetBalanceCall,
+      mutationKey: ['get-balance'], retry: 1
+    })
+
+    const getBalanceHandler = async () => {
+      const payload: GetBalancePayload = {
+       clientType: user?.clientType,
+       login: user?.login,
+       clientId: user?.idClient
+      }
+      try {
+        await getBalanceMutation.mutateAsync(payload,{
+          onSuccess: (data) => {
+            setBalance(data)
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+useEffect(()=>{
+  getBalanceHandler()
+},[user])
 
   return (
     <div>

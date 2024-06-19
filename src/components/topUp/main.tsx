@@ -11,10 +11,12 @@ import { errorMessage } from "../../utils/errorMessage";
 import { useSnackbar } from "../../utils/snackBar";
 import { useAtom } from "jotai";
 import { userData } from "../../state";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
   const { showSnackbar } = useSnackbar();
   const [user] = useAtom(userData)
+  const navigate = useNavigate()
   const validationSchema = object().shape({
     amount: number().typeError("Amount must be a number").required("Amount is required"),
   });
@@ -36,12 +38,14 @@ const Main = () => {
     try {
       await topUpMutation.mutateAsync(payload, {
         onSuccess: (data) => {
-          const responseData = JSON.parse(data?.ResponsePayLoad) as PaymentDetails;
-          window.location.href = responseData?.RedirectURL;
+          console.log(data);
+          window.location.replace(data);
+          console.log("navigated");
+          
         },
       });
     } catch (error: any) {
-      showSnackbar(errorMessage(error));
+      // showSnackbar(errorMessage(error));
     }
   };
   return (
@@ -70,7 +74,7 @@ const Main = () => {
                   <hr className={styles.space} />
                   <p className={styles.confirm}>Payment Method</p>
                   <Payment className={styles.payment} />
-                  <hr className={styles.space} /> <Button>Yes, proceed</Button>
+                  <hr className={styles.space} /> <Button disabled={topUpMutation?.isPending}>{topUpMutation?.isPending ? 'Loading...': 'Yes, proceed'}</Button>
                 </div>
               </div>
             </Form>

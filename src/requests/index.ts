@@ -21,12 +21,20 @@ export interface ProcessPaymentPayload {
   description: string;
   returnUrl: string;
 }
+export interface GetBalancePayload {
+  clientType: number,
+  login: string,
+  clientId: number,
+}
 export const LoginCall = async (payload: LoginPayload) => {
   return (await request.post(`/GetUserAccount?username=${payload.username}&password=${payload.password}`))?.data;
 };
+export const GetBalanceCall = async (payload: GetBalancePayload) => {
+  return (await request.post(`/GetBalance`, payload))?.data;
+}
 export const ProcessPaymentCall = async (payload: ProcessPaymentPayload) => {
   return (await request.post(`/ProcessAddMoneyPayment`, payload))?.data;
 };
 export const QueryPaymentCall = async(reference: string) => {
-  return (await request.post(`/status/${reference}`))?.data
+  return (await request.get(`/status/${reference}`))?.data
 }
