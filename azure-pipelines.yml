@@ -54,7 +54,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'    
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'    
     artifactName: 'VoipFE'
     publishLocation: 'Container'    
   displayName: 'Publish artifact'
