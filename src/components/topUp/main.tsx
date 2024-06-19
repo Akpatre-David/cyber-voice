@@ -4,7 +4,6 @@ import { number, object } from "yup";
 import Button from "../../customs/button/button";
 import Input from "../../customs/input/input";
 import { ReactComponent as Payment } from "../../svgs/payment.svg";
-import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { PaymentDetails, ProcessPaymentCall, ProcessPaymentPayload, baseUrl } from "../../requests";
 import { errorMessage } from "../../utils/errorMessage";
@@ -38,9 +37,9 @@ const Main = () => {
     try {
       await topUpMutation.mutateAsync(payload, {
         onSuccess: (data) => {
-          console.log(data);
+          // console.log(data);
           window.location.replace(data);
-          console.log("navigated");
+          // console.log("navigated");
           
         },
       });
