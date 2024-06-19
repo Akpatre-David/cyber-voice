@@ -35,7 +35,7 @@
 }
 
 .buttonStyle > Button {
-  width: 88px;
+  /* width: 88px;
   height: 46px;
   border-radius: 4px;
   border: none;
@@ -43,7 +43,7 @@
   @media screen and (max-width: 750px) {
     margin-top: 2px;
     width: 220px;
-  }
+  } */
 }
 
 .linkContainer {
