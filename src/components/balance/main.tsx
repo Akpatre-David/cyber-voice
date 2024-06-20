@@ -26,11 +26,9 @@ const Main = () => {
           <div className={styles.flex}>
             <h1 className={styles.header}>{user?.login}</h1>
             <div>
+              {/* <p className={styles.para}>Last Recharge : <span>Fri, 14th June 2024</span></p> */}
               <p className={styles.para}>
-                Last Recharge : <span>Fri, 14th June 2024</span>
-              </p>
-              <p className={styles.para}>
-                Current Airtime Credit :
+                Current Airtime Credit :{" "}
                 <span>
                   {user?.currencyName}
                   {balance?.creditBalance}

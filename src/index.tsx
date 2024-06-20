@@ -10,7 +10,19 @@ import { SnackbarProvider } from "./utils/snackBar";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-const queryClient = new QueryClient();
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 0,
+    },
+    mutations: {
+      retry: 0,
+    },
+  },
+});
+
 const router = createBrowserRouter(routes);
 
 root.render(

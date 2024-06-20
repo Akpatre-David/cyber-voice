@@ -10,7 +10,7 @@ import { LoginCall, LoginPayload } from "../../requests";
 import { useAtom } from "jotai";
 import { userData } from "../../state";
 import { useSnackbar } from "../../utils/snackBar";
-import { loginValidation } from "../../Validation/login";
+import { loginValidation } from "../../validation/login";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Login = () => {
         },
       });
     } catch (error: any) {
-      showSnackbar(error?.message || "Error while logging in", {
+      showSnackbar(error?.response?.data?.message || "Error while logging in", {
         autoHideDuration: 2500,
       });
     }

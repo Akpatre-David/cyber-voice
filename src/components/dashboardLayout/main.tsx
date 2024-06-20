@@ -4,7 +4,7 @@ import Header from "./header/header";
 import styles from "./main.module.css";
 import Sidebar from "./sidebar/sideBar";
 import { Outlet } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { GetBalanceCall, GetBalancePayload } from "../../requests";
 import { useAtom } from "jotai";
 import { userBalance, userData } from "../../state";
@@ -28,31 +28,50 @@ const Main: React.FC<ComponentProps & Props> = ({ children, window }) => {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-    const getBalanceMutation = useMutation({
-      mutationFn: GetBalanceCall,
-      mutationKey: ['get-balance'], retry: 1
-    })
+    // const getBalanceMutation = useQuery({
+    //   queryFn: () => GetBalanceCall({clientType: user?.clientType,
+    //     login: user?.login,
+    //     clientId: user?.idClient }),
+    //   queryKey: ['get-balance'], retry: 1
+    // })
 
-    const getBalanceHandler = async () => {
-      const payload: GetBalancePayload = {
+    // const getBalanceHandler = async () => {
+    //   const payload: GetBalancePayload = {
+    //    clientType: user?.clientType,
+    //    login: user?.login,
+    //    clientId: user?.idClient
+    //   }
+    //   try {
+    //     await getBalanceMutation.mutateAsync(payload,{
+    //       onSuccess: (data) => {
+    //         setBalance(data)
+    //       }
+    //     });
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+
+// useEffect(()=>{
+//   getBalanceMutation
+// },[user])
+
+const { data, isLoading, error } = useQuery({
+  queryKey: ['get-balance'],
+  queryFn: ()=>GetBalanceCall({
        clientType: user?.clientType,
        login: user?.login,
-       clientId: user?.idClient
-      }
-      try {
-        await getBalanceMutation.mutateAsync(payload,{
-          onSuccess: (data) => {
-            setBalance(data)
-          }
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
+       clientId: user?.idClient    
+  }),
+  enabled: !!user, 
+  retry: 0,
+});
 
-useEffect(()=>{
-  getBalanceHandler()
-},[user])
+useEffect(() => {
+  if (data) {
+    setBalance(data);
+  }
+}, [data]);
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import request from "../utils/request";
 
-export const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://helloWorld.com";
+export const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://174.142.93.40:1999";
 export interface LoginPayload {
   username: string;
   password?: string;
