@@ -6,6 +6,8 @@ import { ReactComponent as Back } from "../../../svgs/back.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../../utils/logout";
+import { useAtom } from "jotai";
+import { userData } from "../../../state";
 // import { useSelector } from "react-redux";
 // import { RootState } from "../../../store/store";
 
@@ -66,7 +68,7 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 const Header: React.FC<HeaderProps> = ({ handleSidebarToggle }) => {
-  // const username = useSelector((state: RootState) => state?.user?.name);
+ const [user] = useAtom(userData)
   //eslint-disable-next-line
   const [_, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -98,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({ handleSidebarToggle }) => {
           <Avatar />
         </IconButton>
         <span className={styles.text}>
-          Hello Godwin Agbonmajiaziowe
+          {user?.lastName}
         </span>
       </div>
       <button className={styles.signOut} onClick={logout}>Sign out</button>

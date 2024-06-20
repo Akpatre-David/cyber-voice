@@ -1,4 +1,4 @@
-import react from "react";
+import { useEffect } from "react";
 import styles from "./login.module.css";
 import Card from "../../customs/card/card";
 import { Form, Formik, FormikValues } from "formik";
@@ -7,12 +7,15 @@ import Button from "../../customs/button/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { LoginCall, LoginPayload } from "../../requests";
+import { useAtom } from "jotai";
+import { userData } from "../../state";
+import { useSnackbar } from "../../utils/snackBar";
 import { loginValidation } from "../../Validation/login";
-import Select from "../../customs/select/select";
-import { CircularProgress } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useAtom(userData);
+  const { showSnackbar } = useSnackbar();
 
   const loginMutation = useMutation({
     mutationFn: LoginCall,
@@ -27,15 +30,22 @@ const Login = () => {
     try {
       await loginMutation.mutateAsync(payload, {
         onSuccess: (data) => {
-          // setUser(data?.Data);
+          setUser(data);
+          showSnackbar("Successfully logged in", { autoHideDuration: 2500 });
         },
       });
     } catch (error: any) {
-      // notification.error({
-      //   message: error?.Message || error?.response?.data?.Message,
-      // });
+      showSnackbar(error?.message || "Error while logging in", {
+        autoHideDuration: 2500,
+      });
     }
   };
+
+  useEffect(() => {
+    if (user?.login && user?.eMail && user?.idClient) {
+      navigate("/dashboard");
+    }
+  }, [user]);
 
   return (
     <section className={styles.container}>
@@ -73,12 +83,14 @@ const Login = () => {
                   </div>
 
                   <div className={styles.buttonStyle}>
-                    <Button>Login</Button>
+                    <Button type="submit" disabled={loginMutation.isPending}>
+                      {loginMutation?.isPending ? "Logging in.." : "Login"}
+                    </Button>
                   </div>
 
                   <div className={styles.linkContainer}>
                     <span>
-                      <Link to="/dashboard" className={styles.linkss}>
+                      <Link to="/" className={styles.linkss}>
                         Forget your password?
                       </Link>
                     </span>

@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routes } from "./routes";
 import { RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
+import { SnackbarProvider } from "./utils/snackBar";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
@@ -23,7 +24,9 @@ root.render(
 
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <SnackbarProvider>
+            <App />
+      </SnackbarProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
