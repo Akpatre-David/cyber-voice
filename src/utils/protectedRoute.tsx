@@ -8,16 +8,16 @@ import { logout } from "./logout";
 const ProtectedRoute = () => {
   const user = useAtomValue(userData);
 
-  useEffect(() => {
-    if (user?.idClient) {
-      const expiryDate = new Date(user?.idClient);
-      const currentDate = new Date();
+  // useEffect(() => {
+  //   if (user?.idClient) {
+  //     const expiryDate = new Date(user?.idClient);
+  //     const currentDate = new Date();
 
-      if (expiryDate < currentDate) {
-        logout();
-      }
-    }
-  }, [user]);
+  //     if (expiryDate < currentDate) {
+  //       logout();
+  //     }
+  //   }
+  // }, [user]);
 
   if (user?.idClient) {
     return <Outlet />;

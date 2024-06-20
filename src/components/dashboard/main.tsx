@@ -27,8 +27,12 @@ const Main = () => {
   useEffect(() => {
     if (!!ref && queryTransactionQuery.isSuccess)
       showSnackbar('Top Up Successful!!')
-    queryClient.refetchQueries({ queryKey: ["get-balance"] });
+    queryClient.refetchQueries({ queryKey: ["get-balance"]});
   }, [ref, queryTransactionQuery.isSuccess]);
+
+  useEffect(() => {
+    queryClient.refetchQueries({ queryKey: ['get-balance'] });
+  }, [queryClient]);
   return (
     <section className={styles.section}>
       <h2 className={styles.welcome}>Welcome to our selfcare, {user?.lastName}</h2>
