@@ -24,8 +24,9 @@ const Main = () => {
     enabled: !!ref,
   });
 
+
   useEffect(() => {
-    if (!!ref && queryTransactionQuery.isSuccess)
+    if (!!ref && queryTransactionQuery?.isSuccess)
       showSnackbar('Top Up Successful!!')
     queryClient.refetchQueries({ queryKey: ["get-balance"]});
   }, [ref, queryTransactionQuery.isSuccess]);
