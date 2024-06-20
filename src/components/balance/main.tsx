@@ -4,15 +4,15 @@ import Card from "../../customs/card/card";
 import styles from "./main.module.css";
 
 const Main = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <section className={styles.section}>
       <div>
         <p className={styles.select}>
-          Select voice line:{" "}
+          <label>Select voice line:</label>
           <select>
             <option>Myself- 02012435667</option>
-          </select>{" "}
+          </select>
         </p>
       </div>
       <div className={styles.card}>
@@ -22,11 +22,15 @@ const Main = () => {
           <div className={styles.flex}>
             <h1 className={styles.header}>015150099876</h1>
             <div>
-                <p className={styles.para}>Last Recharge : <span>Fri, 14th June 2024</span></p>
-                <p className={styles.para}>Current Airtime Credit : <span>2000</span></p>
+              <p className={styles.para}>
+                Last Recharge : <span>Fri, 14th June 2024</span>
+              </p>
+              <p className={styles.para}>
+                Current Airtime Credit : <span>2000</span>
+              </p>
             </div>
           </div>
-          <Button onClick={()=>navigate('/top-up')}>Top up Airtime</Button>
+          <Button onClick={() => navigate("/top-up")}>Top up Airtime</Button>
         </Card>
       </div>
     </section>
