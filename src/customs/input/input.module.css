@@ -42,3 +42,17 @@ input::placeholder {
   font-size: 0.8rem;
   font-weight: bold;
 }
+
+.showToggle {
+  position: absolute;
+  top: 19%;
+  right: 1rem;
+  color: blue;
+  background: transparent;
+  border: transparent;
+  font-size: 1rem;
+}
+
+.inputContainer {
+  position: relative;
+}

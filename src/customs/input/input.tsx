@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from "react";
+import React, { FC, InputHTMLAttributes, useState } from "react";
 import styles from "./input.module.css";
 import { Field, Formik, FieldProps } from "formik";
 
@@ -10,6 +10,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   disable?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  isPasswordInput?: boolean;
 }
 
 const Input: FC<InputProps> = ({
@@ -19,20 +20,35 @@ const Input: FC<InputProps> = ({
   type,
   label,
   disable,
+  isPasswordInput,
 }) => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+
+  const showPasswordHandle = () => {
+    setIsShowPassword((prevState) => !prevState);
+  };
+
   return (
     <Field name={name}>
       {({ field, meta }: FieldProps) => (
         <section className={styles.container}>
           <label>{label}</label>
 
-          <div className={styles.InputContainer}>
+          <div className={type === "password" ? styles.inputContainer : ""}>
             <input
               {...field}
               placeholder={placeholder}
-              type={type}
+              type={isShowPassword ? "password" : "text"}
               value={value}
-              disabled={disable}></input>
+              disabled={disable}
+            />
+            {type === "password" && (
+              <button
+                className={styles.showToggle}
+                onClick={showPasswordHandle}>
+                {isShowPassword ? "Show" : "Hide"}
+              </button>
+            )}
           </div>
 
           {meta.touched && meta.error && (

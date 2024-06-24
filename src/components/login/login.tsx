@@ -35,9 +35,7 @@ const Login = () => {
         },
       });
     } catch (error: any) {
-      showSnackbar(error?.response?.data?.message || "Error while logging in", {
-        autoHideDuration: 2500,
-      });
+      showSnackbar(error?.response?.data?.message|| 'Error while logging in', { autoHideDuration: 2500})
     }
   };
 

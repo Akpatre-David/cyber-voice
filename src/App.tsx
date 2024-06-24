@@ -6,6 +6,7 @@ import Login from "./components/login/login";
 import NotFound from "./components/notFound/notFound";
 import TopUp from "./components/topUp/main";
 import ProtectedRoute from "./utils/protectedRoute";
+import Register from "./components/register/register";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="register" element={<Register />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<DashboardLayout />}>
