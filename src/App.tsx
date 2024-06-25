@@ -2,11 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardLayout from "./components/dashboardLayout/main";
 import Dashboard from "./components/dashboard/main";
 import Balance from "./components/balance/main";
-import Login from "./components/login/login";
 import NotFound from "./components/notFound/notFound";
 import TopUp from "./components/topUp/main";
 import ProtectedRoute from "./utils/protectedRoute";
-import Register from "./components/register/register";
+import Login from "./components/login/login";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="register" element={<Register />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<DashboardLayout />}>
